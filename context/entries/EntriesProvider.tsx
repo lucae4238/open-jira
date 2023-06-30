@@ -47,6 +47,15 @@ export const EntriesProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }
 
+  const deleteEntry = async (id: string) => {
+    try {
+      const response = await entriesApi.post(`/entries/${id}`) 
+      dispatch({type: "[Entry] Delete=Entry", payload: id})
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+
   const refreshEntries = async () => {
     const { data } = await entriesApi.get<Entry[]>("/entries")
     dispatch({ type: "[Entry] Refresh=data", payload: data })
@@ -64,6 +73,7 @@ export const EntriesProvider: FC<PropsWithChildren> = ({ children }) => {
       // Mehthods
       methods: {
         addNewEntry,
+        deleteEntry, 
         updateEntry
       }
     }}>

@@ -6,6 +6,7 @@ interface ContextProps {
      methods: {
           addNewEntry: (description: string) => void
           updateEntry: (value: Entry) => void
+          deleteEntry: (id: string) => void
      }
 }
 

@@ -12,8 +12,6 @@ const checkMongoIDRegExp = new RegExp("^[0-9a-fA-F]{24}$");
 export function middleware(request: NextRequest) {
   const reqHref = request.nextUrl.href
 
-  console.log('requests',reqHref, )
-
   if(entryIdPattern.test(reqHref)){
 
     const { id } = entryIdPattern.exec(reqHref)?.pathname.groups!
